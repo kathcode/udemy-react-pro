@@ -11,31 +11,31 @@ interface IRoute {
 }
 
 // Lazy load
-const Lazy1 = lazy(() => import(/* webpackChunkName: LazyPage1 */'../01-lazyload/pages/LazyPage1'))
-const Lazy2 = lazy(() => import(/* webpackChunkName: LazyPage2 */'../01-lazyload/pages/LazyPage2'))
-const Lazy3 = lazy(() => import(/* webpackChunkName: LazyPage3 */'../01-lazyload/pages/LazyPage3'))
+const Lazy1 = lazy(() => import(/* webpackChunkName: LazyPage1 */'../pages/LazyPage1'))
+const Lazy2 = lazy(() => import(/* webpackChunkName: LazyPage2 */'../pages/LazyPage2'))
+const Lazy3 = lazy(() => import(/* webpackChunkName: LazyPage3 */'../pages/LazyPage3'))
 
 // Routes of the application
 export const routes: IRoute[] = [
   {
-    path: 'lazy1',
-    to: '/lazy1',
+    path: 'home',
+    to: '/home',
     clasName: '',
     Component: Lazy1,
-    name: 'Lazy-1' // it will appear in the url
+    name: 'Home' // it will appear in the url
   },
   {
-    path: 'lazy2',
-    to: '/lazy2',
+    path: 'about',
+    to: '/about',
     clasName: '',
     Component: Lazy2,
-    name: 'Lazy-2' // it will appear in the url
+    name: 'About' // it will appear in the url
   },
   {
-    path: 'lazy3',
-    to: '/lazy3',
+    path: 'users',
+    to: '/users',
     clasName: '',
     Component: Lazy3,
-    name: 'Lazy-3' // it will appear in the url
+    name: 'Users' // it will appear in the url
   }
 ]
