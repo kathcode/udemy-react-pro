@@ -1,4 +1,6 @@
 import { lazy, LazyExoticComponent } from 'react';
+import { NoLazyLoad } from '../01-lazyload/pages/NoLazyLoad';
+
 
 type JSXComponent = () => JSX.Element
 
@@ -11,31 +13,22 @@ interface IRoute {
 }
 
 // Lazy load
-const Lazy1 = lazy(() => import(/* webpackChunkName: LazyPage1 */'../01-lazyload/pages/LazyPage1'))
-const Lazy2 = lazy(() => import(/* webpackChunkName: LazyPage2 */'../01-lazyload/pages/LazyPage2'))
-const Lazy3 = lazy(() => import(/* webpackChunkName: LazyPage3 */'../01-lazyload/pages/LazyPage3'))
+const LazyLayoutModule = lazy(() => import(/* webpackChunkName: LazyLayoutModule */'../01-lazyload/layout/LazyLayoutModule'))
 
 // Routes of the application
 export const routes: IRoute[] = [
   {
-    path: 'lazy1',
-    to: '/lazy1',
+    path: 'lazy/*',
+    to: '/lazy',
     clasName: '',
-    Component: Lazy1,
-    name: 'Lazy-1' // it will appear in the url
+    Component: LazyLayoutModule,
+    name: 'Lazy' // it will appear in the url
   },
   {
-    path: 'lazy2',
-    to: '/lazy2',
+    path: 'no-lazy',
+    to: '/no-lazy',
     clasName: '',
-    Component: Lazy2,
-    name: 'Lazy-2' // it will appear in the url
+    Component: NoLazyLoad,
+    name: 'No Lazy' // it will appear in the url
   },
-  {
-    path: 'lazy3',
-    to: '/lazy3',
-    clasName: '',
-    Component: Lazy3,
-    name: 'Lazy-3' // it will appear in the url
-  }
 ]
