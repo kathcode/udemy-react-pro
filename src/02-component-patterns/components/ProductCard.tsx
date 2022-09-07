@@ -13,12 +13,12 @@ const { Provider } = ProductContext;
 
 
 // Main components
-export const ProductCard = ({ product, children }: IProductCardProps) => {
+export const ProductCard = ({ product, children, className, style }: IProductCardProps) => {
   const [counter, setCounter] = useState(0);
 
   return (
     <Provider value={{ counter, setCounter, product }}>
-      <section className={styles.productCard}>
+      <section className={`${styles.productCard} ${className}`} style={style}>
         {children}
       </section>
     </Provider>

@@ -1,12 +1,21 @@
-import { useContext } from "react";
+import { CSSProperties, useContext } from "react";
 import { ProductContext } from "./ProductCard";
 
 import styles from '../styles/styles.module.css'
 
-export const ProductButtons = () => {
+
+interface IProductButtonsProps {
+  className?: string,
+  style?: CSSProperties
+}
+
+export const ProductButtons = ({ className, style }: IProductButtonsProps) => {
   const { counter, setCounter } = useContext(ProductContext);
 
-  return (<section className={styles.buttonsContainer}>
+  return (<section
+    className={`${styles.buttonsContainer} ${className}`}
+    style={style}
+  >
     <button
       onClick={() => setCounter(prev => prev - 1)}
       className={styles.buttonMinus}
