@@ -1,4 +1,5 @@
-import { createContext, useState } from 'react'
+import { createContext } from 'react'
+import { useProduct } from '../hooks/useProduct';
 import { IProductContext, IProductCardProps } from '../interfaces/interfaces';
 
 
@@ -13,11 +14,11 @@ const { Provider } = ProductContext;
 
 
 // Main components
-export const ProductCard = ({ product, children, className, style }: IProductCardProps) => {
-  const [counter, setCounter] = useState(0);
+export const ProductCard = ({ product, children, className, style, onChange, value }: IProductCardProps) => {
+  const { counter, increaseBy } = useProduct({ onChange, product, value });
 
   return (
-    <Provider value={{ counter, setCounter, product }}>
+    <Provider value={{ counter, increaseBy, product }}>
       <section className={`${styles.productCard} ${className}`} style={style}>
         {children}
       </section>
@@ -28,6 +29,7 @@ export const ProductCard = ({ product, children, className, style }: IProductCar
 /*
 OPTION 2
 import { ProductImage, ProductTitle, ProductButtons } from './';
+import { useProduct } from '../hooks/useProduct';
 ProductCard.Title = ProductTitle;
 ProductCard.Image = ProductImage;
 ProductCard.Buttons = ProductButtons;

@@ -4,7 +4,14 @@ export interface IProductCardProps {
   product: IProduct,
   children?: ReactElement | ReactElement[],
   className?: string,
-  style?: CSSProperties
+  style?: CSSProperties,
+  onChange?: (args: IOnChangCountArgs) => void,
+  value?: number
+}
+
+export interface IOnChangCountArgs {
+  product: IProduct,
+  count: number
 }
 
 export interface IProduct {
@@ -15,6 +22,10 @@ export interface IProduct {
 
 export interface IProductContext {
   counter: number;
-  setCounter: React.Dispatch<React.SetStateAction<number>>,
+  increaseBy: (value: number) => void,
   product: IProduct
+}
+
+export interface IShoppingCard extends IProduct {
+  count: number
 }
